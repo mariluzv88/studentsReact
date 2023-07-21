@@ -1,23 +1,29 @@
-import logo from './logo.svg';
 import './App.css';
+import { useState } from 'react';
+import students from './models/students';
+import Students from './componets/Students';
+import Score from './componets/Score';
+ 
 
 function App() {
+ const [group,setGroup]=useState(students) 
+//  const [score,setScore]=useState(students(score)) 
+
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {group.map((peeps)=>{
+        return <div> <Students people={peeps}/>
+      {peeps.scores.map((score)=>{
+        return <Score people={score}/>
+     
+    
+    
+    })}
+    
+    </div>
+    })}
+     
     </div>
   );
 }
